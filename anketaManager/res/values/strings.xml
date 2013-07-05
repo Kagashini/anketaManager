@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Анкета клиента</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="but_ok">ОК</string>
+	<string name="but_cancel">Отмена</string>
+	<string name="but_next">Далее</string>
+	<string name="but_prev">Назад</string>
+	<string name="but_login">Войти</string>
+	<string name="but_load">Загрузить</string>
+	<string name="but_save">Сохранить</string>
+	<string name="but_settings">Настройки</string>
+	<string name="but_send">Отправить</string>
+	
+	
+	<string name="caption_choise">Выбрать</string>
+	
+	<string name="hint_address">Введите адрес</string>
+	<string name="hint_customer">Введите покупателя</string>
+	<string name="hint_value">Введите значение</string>
+	
+	<string name="label_settings">Настройки</string>
+	<string name="label_server">Сервер</string>
+	<string name="label_port">Порт</string>
+	<string name="label_login">Логин</string>
+	<string name="label_password">Пароль</string>
+	<string name="label_topsecret">Использовать FTPS</string>
+	
+	<string name="label_customer">Покупатель</string>
+	<string name="label_region">Город/Регион</string>
+	<string name="label_addess">Адрес фактический</string>
+	<string name="label_kind_activity">Вид деятельности</string>
+	<string name="label_date_visit">Дата посещения</string>
+	<string name="label_visit_purpose">Цель посещения</string>
+	
+	<string name="label_to_order">Заказан</string>
+	<string name="label_express_deliveries">Количество экспресс-доставок</string>
+	<string name="label_amount_deliveries">Сумма экспресс-доставок</string>
+	<string name="label_intro_product_lines">Кол-во введенных асортиментных групп</string>
+	<string name="label_training_seminar">Проведение обучающего семинара</string>
+	
+	<string name="label_direct_purchase">Прямые закупки</string>
+	<string name="label_purchases_competitors">Закупки у конкурентов</string>
+	<string name="label_supplier_competitors">Поставщики-конкуренты</string>
+	<string name="label_count_outlets">Кол-во торговых точек</string>
+	<string name="label_total_turnover">Общий годовой оборот компании</string>
+	<string name="label_shared_of_total_terema">Доля продукции Терема от общего, %</string>
+	<string name="label_discounts_competitors">Скидки конкурентов по брендам</string>
+	<string name="label_adv_companies_competitors">Рекламные кампании конкурентов</string>
+	<string name="label_promo_brand">Рекламные материалы по брендам</string>
+	
+	<string name="label_brand">Брэнд</string>
+	<string name="label_turnover_of">Оборот за</string>
+	<string name="label_availability">Наличие</string>
+	<string name="label_stands">Стенды</string>
+	<string name="label_adv">Реклама</string>
+	<string name="label_comment">Комментарий</string>
+	
+	<string name="label_param_name">Название параметр</string>
+	<string name="label_param_value">Значение параметра</string>
+		
+</resources>
