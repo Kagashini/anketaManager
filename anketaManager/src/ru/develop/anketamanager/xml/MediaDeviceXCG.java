@@ -11,7 +11,9 @@ import java.io.Serializable;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -390,7 +392,16 @@ public class MediaDeviceXCG
 			   }
 		   }
 		   else
-			   serializer.text(po.toString());	       
+		   {
+			  // if(((Calendar) po)!=null)
+				//   serializer.text(new SimpleFormatter("yyyy.MM.dd").toString());
+			  // else
+			   {
+				   if(po.getClass().getName().equals("java.lang.String"))				   
+					   serializer.text(po.toString());
+				   else Serialize(ns,serializer,po);				  
+			   }
+		   }
 	       serializer.endTag(ns,ro.Name);		
 	   	   }
 	   }

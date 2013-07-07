@@ -40,16 +40,18 @@ public class AnketaGridAdapter implements OnClickListener,OnEditorActionListener
 	  
 	  _correct();	  	
 	  
+	  
+	  
 	  TableRow header = new TableRow(context);
 	  
 	  TextView plus_cell = new TextView(context);
 	  plus_cell.setWidth(25);
 	  header.addView(plus_cell);
-	  for(int ci=0;ci<this.columns.length;ci++)	  
+	  for(int ci=0;ci<this.columns.length-1;ci++)	  
 	  {
 		  TextView hrc = new TextView(context);
 		  hrc.setWidth(85);
-		  hrc.setText(nameCol(ci++));
+		  hrc.setText(nameCol(ci));
 		  hrc.setTextColor(Color.BLUE);
 		  header.addView(hrc);
 	  }
@@ -65,7 +67,7 @@ public class AnketaGridAdapter implements OnClickListener,OnEditorActionListener
 		  plus_cell2.setText("+");		  
 		  plus_cell2.setOnClickListener(this);
 		  row.addView(plus_cell2);
-		  for(int ci=0;ci<this.columns.length;ci++)	  
+		  for(int ci=0;ci<this.columns.length-1;ci++)	  
 		  {
 			  EditText cell = new EditText(context);
 			  cell.setOnEditorActionListener(this);
@@ -88,6 +90,14 @@ public class AnketaGridAdapter implements OnClickListener,OnEditorActionListener
 		  plus_cell2.setText("+");		  
 		  plus_cell2.setOnClickListener(this);
 		  _row.addView(plus_cell2);
+		  for(int ci=0;ci<this.columns.length-1;ci++)	  
+		  {
+			  EditText cell = new EditText(context);
+			  cell.setOnEditorActionListener(this);
+			  cell.setWidth(85);
+			  cell.setText(getVal(ci,0));			  
+			  _row.addView(cell);
+		  }  
 		table.addView(_row);
 	}
 	

@@ -4,12 +4,14 @@ package ru.develop.anketamanager;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.lang.ref.Reference;
 
 import ru.develop.anketamanager.ftp.FtpSendTask;
 import ru.develop.anketamanager.widget.dialog.FileDialog;
 import ru.develop.anketamanager.widget.dialog.IFileDialogDepends;
 import ru.develop.anketamanager.xml.Anketa;
 import ru.develop.anketamanager.xml.MediaDeviceXCG;
+import ru.develop.anketamanager.xml.References;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -100,7 +102,8 @@ public class ActivityStep6 extends Activity implements OnClickListener{
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	  MediaDeviceXCG.Save(file,anketa);
+	  References refs = MediaDeviceXCG.LoadRefs(new File("/mnt/sdcard/anketa.xml"));
+	  MediaDeviceXCG.Save(file,anketa,refs);
 	  FtpSendTask ft = new FtpSendTask("-s -b <hostname> <username> <password> <remote file> <local file>",error);
 	  		
 	}

@@ -123,6 +123,8 @@ public class ActivityStep3 extends Activity implements OnClickListener{
 			   
 			   pis.add(pi);
 		   }
+		   
+		   anketa.setProductRanges(pis);
 		}
 		 		
 	}
