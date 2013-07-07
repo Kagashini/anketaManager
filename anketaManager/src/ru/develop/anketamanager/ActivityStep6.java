@@ -2,10 +2,10 @@ package ru.develop.anketamanager;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 
-import javax.xml.bind.JAXBException;
-
+import ru.develop.anketamanager.ftp.FtpSendTask;
 import ru.develop.anketamanager.widget.dialog.FileDialog;
 import ru.develop.anketamanager.widget.dialog.IFileDialogDepends;
 import ru.develop.anketamanager.xml.Anketa;
@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class ActivityStep6 extends Activity implements OnClickListener{
 	
@@ -27,6 +28,7 @@ public class ActivityStep6 extends Activity implements OnClickListener{
 	FileDialogDepends fdd=null;
 	
 	
+	TextView error;
 	Button but_save;
 	Button but_prev;
 	Button but_next;
@@ -42,7 +44,9 @@ public class ActivityStep6 extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_anketa_step6);
+		
+		 error = (TextView) findViewById(R.id.error_login);
 		
 		 but_next = (Button)findViewById(R.id.but_next);
 			if(but_next!=null)
@@ -51,10 +55,11 @@ public class ActivityStep6 extends Activity implements OnClickListener{
 			if(but_prev!=null)
 				but_prev.setOnClickListener(this);
 		
-			but_save = (Button)findViewById(R.id.but_Save);
+			but_save = (Button)findViewById(R.id.but_Send);
 			if(but_save!=null)
 				but_save.setOnClickListener(this);
 			anketa = (Anketa)getIntent().getSerializableExtra("anketa");
+		
 	}
 
 	@Override
@@ -74,14 +79,14 @@ public class ActivityStep6 extends Activity implements OnClickListener{
 		Intent intent=null;
 		
 		switch (v.getId()) {
-        case R.id.but_next:
-        	// TODO Auto-generated method stub
-    		intent= new Intent(this, ActivityMain.class);
-    		intent.putExtra("anketa",(Serializable)anketa);
+        case R.id.but_next:        	
+    		intent= new Intent(this, ActivityStep1.class);
+    		intent.putExtra("anketa",anketa);
     	    startActivity(intent);
        	 break;  
-        case R.id.but_Save:
-        	 fd.openFileDialog(fdd);
+        case R.id.but_Send:
+        	refresh(new File("/mnt/sdcard/anketa.xml")); 
+        	//fd.openFileDialog(fdd);
        	 break;  
 		}			
 		
@@ -89,13 +94,15 @@ public class ActivityStep6 extends Activity implements OnClickListener{
 	
 	void refresh(File file)
 	{
-	  MediaDeviceXCG md = new MediaDeviceXCG();
 	  try {
-		 md.Save(file,anketa);
-	} catch (JAXBException e) {
+		anketa.save(new File("/mnt/sdcard/anketa2.xml"));
+	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	  MediaDeviceXCG.Save(file,anketa);
+	  FtpSendTask ft = new FtpSendTask("-s -b <hostname> <username> <password> <remote file> <local file>",error);
+	  		
 	}
 		
 }

@@ -8,11 +8,14 @@
 
 package ru.develop.anketamanager.xml;
 
+import java.io.Serializable;
+
+/*
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
+*/
 
 /**
  * <p>Java class for AnketaProductInfoExt complex type.
@@ -34,15 +37,15 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AnketaProductInfoExt", propOrder = {
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "AnketaProductInfoExt", propOrder = {
 
-})
-public class AnketaProductInfoExt {
+//})
+public class AnketaProductInfoExt  implements Serializable {
 
-    @XmlElement(name = "Name", required = true)
+  //  @XmlElement(name = "Name", required = true)
     protected String name;
-    @XmlElement(name = "Value", required = true)
+   // @XmlElement(name = "Value", required = true)
     protected String value;
 
     /**

@@ -8,13 +8,14 @@
 
 package ru.develop.anketamanager.xml;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+//import javax.xml.bind.annotation.XmlAccessType;
+//import javax.xml.bind.annotation.XmlAccessorType;
+//import javax.xml.bind.annotation.XmlElement;
+//import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -42,25 +43,25 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AnketaProductInfo", propOrder = {
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "AnketaProductInfo", propOrder = {
 
-})
-public class AnketaProductInfo {
+//})
+public class AnketaProductInfo  implements Serializable{
 
-    @XmlElement(name = "Brand", required = true)
+    //@XmlElement(name = "Brand", required = true)
     protected String brand;
-    @XmlElement(name = "Turnover", required = true)
+    //@XmlElement(name = "Turnover", required = true)
     protected BigDecimal turnover;
-    @XmlElement(name = "Availability", required = true)
+    //@XmlElement(name = "Availability", required = true)
     protected String availability;
-    @XmlElement(name = "Stands", required = true)
+    //@XmlElement(name = "Stands", required = true)
     protected String stands;
-    @XmlElement(name = "Adv", required = true)
+    //@XmlElement(name = "Adv", required = true)
     protected String adv;
-    @XmlElement(name = "Comment", required = true)
+    //@XmlElement(name = "Comment", required = true)
     protected String comment;
-    @XmlElement(name = "Extensions")
+    //@XmlElement(name = "Extensions")
     protected List<AnketaProductInfoExt> extensions;
 
     /**

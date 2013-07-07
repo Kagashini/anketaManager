@@ -9,19 +9,16 @@
     tools:context=".MainActivity$DummySectionFragment" >
 	
     <Button
-        android:id="@+id/but_Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/but_save" />
-
-    <Button
         android:id="@+id/but_Send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/but_Save"
-        android:enabled="false"
         android:text="@string/but_send" />
+    
+      <TextView
+      android:id="@+id/error_login"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" 
+      android:textColor="@color/error" />
     
 </RelativeLayout>

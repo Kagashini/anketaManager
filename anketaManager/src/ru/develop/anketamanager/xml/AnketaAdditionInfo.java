@@ -8,12 +8,14 @@
 
 package ru.develop.anketamanager.xml;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+/*
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
+*/
 
 /**
  * <p>Java class for AnketaAdditionInfo complex type.
@@ -38,21 +40,21 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AnketaAdditionInfo", propOrder = {
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "AnketaAdditionInfo", propOrder = {
 
-})
-public class AnketaAdditionInfo {
+//})
+public class AnketaAdditionInfo  implements Serializable {
 
-    @XmlElement(name = "ToOrder", required = true)
+  //  @XmlElement(name = "ToOrder", required = true)
     protected String toOrder;
-    @XmlElement(name = "ExpressDeliveries")
+  //  @XmlElement(name = "ExpressDeliveries")
     protected int expressDeliveries;
-    @XmlElement(name = "AmountDeliveries", required = true)
+  //  @XmlElement(name = "AmountDeliveries", required = true)
     protected BigDecimal amountDeliveries;
-    @XmlElement(name = "IntroProductLines")
+ //   @XmlElement(name = "IntroProductLines")
     protected int introProductLines;
-    @XmlElement(name = "TrainingSeminar", required = true)
+ //   @XmlElement(name = "TrainingSeminar", required = true)
     protected String trainingSeminar;
 
     /**

@@ -1,24 +1,11 @@
 package ru.develop.anketamanager;
 
-import java.io.Serializable;
+import java.io.File;
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-import java.util.TimeZone;
 
-import javax.xml.datatype.Duration;
-import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.namespace.QName;
-
-import ru.develop.anketamanager.widgets.Adapters.KindActivityExpandableListAdapter;
-import ru.develop.anketamanager.widgets.Adapters.RegionExpandableListAdapter;
-import ru.develop.anketamanager.xml.ActivityKind;
 import ru.develop.anketamanager.xml.Anketa;
 import ru.develop.anketamanager.xml.AnketaMarketInfo;
-import ru.develop.anketamanager.xml.Region;
+import ru.develop.anketamanager.xml.MediaDeviceXCG;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,10 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
 
 public class ActivityStep5 extends Activity implements OnClickListener{
 	
@@ -49,17 +33,17 @@ public class ActivityStep5 extends Activity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_anketa_step5);
 		
-		direct_purchase = (EditText) findViewById(R.id.expressdeliveries);
-		pusrchase_competitors = (EditText) findViewById(R.id.address);
-		supplier_competitors = (EditText) findViewById(R.id.expressdeliveries);
-		count_outlets = (EditText) findViewById(R.id.address);
-		total_turnover = (EditText) findViewById(R.id.expressdeliveries);
-		share_of_total_terema = (EditText) findViewById(R.id.address);
-		discounts_competitors = (EditText) findViewById(R.id.expressdeliveries);
-		adv_companies_competitors = (EditText) findViewById(R.id.address);
-		promo_brand = (EditText) findViewById(R.id.expressdeliveries);		
+		direct_purchase = (EditText) findViewById(R.id.direct_purchase);
+		pusrchase_competitors = (EditText) findViewById(R.id.pusrchase_competitors);
+		supplier_competitors = (EditText) findViewById(R.id.supplier_competitors);
+		count_outlets = (EditText) findViewById(R.id.count_outlets);
+		total_turnover = (EditText) findViewById(R.id.total_turnover);
+		share_of_total_terema = (EditText) findViewById(R.id.share_of_total_terema);
+		discounts_competitors = (EditText) findViewById(R.id.discounts_competitors);
+		adv_companies_competitors = (EditText) findViewById(R.id.adv_companies_competitors);
+		promo_brand = (EditText) findViewById(R.id.promo_brand);		
 		
 		
 		 but_next = (Button)findViewById(R.id.but_next);
@@ -82,26 +66,47 @@ public class ActivityStep5 extends Activity implements OnClickListener{
 			   mi = new AnketaMarketInfo(); 
 		   mi.setDirectPurchase(direct_purchase.getText().toString());
 		   mi.setAdvCompaniesCompetitors(adv_companies_competitors.getText().toString());
-		   mi.setCountOutlets(Integer.parseInt(count_outlets.getText().toString()));		   
+		   
+		   try
+		   {
+		   mi.setCountOutlets(Integer.parseInt(count_outlets.getText().toString()));
+		   }		
+		   catch(Exception e)
+		   {		   
+		   }
+		   
 		   mi.setSupplierCompetitors(supplier_competitors.getText().toString());
+		   
+		   try
+		   {
 		   mi.setTotalTurnover(new BigDecimal(total_turnover.getText().toString()));
+		   }
+		   catch(Exception e)
+		   {		   
+		   }		   
+		   
+		   
+		   try
+		   {
 		   mi.setShareOfTotalTerema(Integer.parseInt(share_of_total_terema.getText().toString()));
+		   }
+		   catch(Exception e)
+		   {		   
+		   }
+		   
+		   try
+		   {
 		   mi.setDiscountsCompetitors(Integer.parseInt(discounts_competitors.getText().toString()));
+		   }
+		   catch(Exception e)
+		   {		   
+		   }
 		   mi.setPromoBrand(promo_brand.getText().toString());
-		   anketa.setMarketInfo(mi);
+		   anketa.setMarketInfo(mi);		 
 		}
 	}
 	
-	@Override
-	  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-	    // запишем в лог значения requestCode и resultCode
-	    Log.d("myLogs", "requestCode = " + requestCode + ", resultCode = " + resultCode);
-	    // если пришло ОК
-	    if (resultCode == RESULT_OK) 
-	    {
-	    	
-	    }
-	}
+	
 	      	    
 	
 	@Override
@@ -113,14 +118,14 @@ public class ActivityStep5 extends Activity implements OnClickListener{
         	// TODO Auto-generated method stub
     		intent= new Intent(this, ActivityStep6.class);
     		setData();
-    		intent.putExtra("anketa",(Serializable)anketa);
+    		intent.putExtra("anketa",anketa);
     	    startActivity(intent);
        	 break;
         case R.id.but_prev:
         	// TODO Auto-generated method stub
     		intent= new Intent(this, ActivityStep4.class);
     		setData();
-    		intent.putExtra("anketa",(Serializable)anketa);
+    		intent.putExtra("anketa",anketa);
     	    startActivity(intent);
        	 	break;       	 
 		}			

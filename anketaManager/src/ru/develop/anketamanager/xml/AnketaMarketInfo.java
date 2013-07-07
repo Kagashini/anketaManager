@@ -8,12 +8,13 @@
 
 package ru.develop.anketamanager.xml;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
-import javax.xml.bind.annotation.XmlAccessType;
+/*import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
+*/
 
 /**
  * <p>Java class for AnketaMarketInfo complex type.
@@ -42,29 +43,29 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AnketaMarketInfo", propOrder = {
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "AnketaMarketInfo", propOrder = {
 
-})
-public class AnketaMarketInfo {
+//})
+public class AnketaMarketInfo   implements Serializable{
 
-    @XmlElement(name = "DirectPurchase", required = true)
+    //@XmlElement(name = "DirectPurchase", required = true)
     protected String directPurchase;
-    @XmlElement(name = "PurchasesCompetitors", required = true)
+    //@XmlElement(name = "PurchasesCompetitors", required = true)
     protected String purchasesCompetitors;
-    @XmlElement(name = "SupplierCompetitors", required = true)
+    //@XmlElement(name = "SupplierCompetitors", required = true)
     protected String supplierCompetitors;
-    @XmlElement(name = "CountOutlets")
+    //@XmlElement(name = "CountOutlets")
     protected int countOutlets;
-    @XmlElement(name = "TotalTurnover", required = true)
+    //@XmlElement(name = "TotalTurnover", required = true)
     protected BigDecimal totalTurnover;
-    @XmlElement(name = "ShareOfTotalTerema")
+    //@XmlElement(name = "ShareOfTotalTerema")
     protected int shareOfTotalTerema;
-    @XmlElement(name = "DiscountsCompetitors")
+    //@XmlElement(name = "DiscountsCompetitors")
     protected int discountsCompetitors;
-    @XmlElement(name = "AdvCompaniesCompetitors", required = true)
+    //@XmlElement(name = "AdvCompaniesCompetitors", required = true)
     protected String advCompaniesCompetitors;
-    @XmlElement(name = "PromoBrand", required = true)
+    //@XmlElement(name = "PromoBrand", required = true)
     protected String promoBrand;
 
     /**

@@ -8,7 +8,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity$DummySectionFragment" >
-
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical"       
+        android:scrollbarAlwaysDrawVerticalTrack="true" > 	
 <FrameLayout 
 android:id="@+id/frameLayout1" 
 android:layout_width="match_parent" 
@@ -18,6 +22,7 @@ android:layout_height="match_parent">
     android:id="@+id/linearstep2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+      android:paddingBottom="45dp"
     android:layout_gravity="fill_horizontal|center_vertical"
     android:orientation="vertical" >
 
@@ -44,25 +49,15 @@ android:layout_height="match_parent">
         android:layout_height="wrap_content"
         android:text="@string/label_region" />
     
-    <ExpandableListView
-        android:id="@+id/region"
+    <Spinner
+	    android:id="@+id/region"
         android:layout_width="match_parent"
-        android:layout_height="60dp" >
-
-    </ExpandableListView>
-
-    <TextView
-        android:id="@+id/date_label"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/label_date_visit" />
+        >
+	</Spinner>
 
-    <DatePicker
-        android:id="@+id/date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
+    
+      <TextView
         android:id="@+id/address_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,25 +73,52 @@ android:layout_height="match_parent">
 
         <requestFocus />
     </EditText>
-    <TextView
+    
+    
+    
+    <TextView
         android:id="@+id/kindactivity_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_kind_activity" />
 
-     <ExpandableListView
+     <Spinner
          android:id="@+id/kindactivity"
          android:layout_width="match_parent"
-         android:layout_height="60dp" >
+         android:layout_height="wrap_content"
+        >
 
-    </ExpandableListView>
+    </Spinner>
     
-      <ExpandableListView
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/date_label"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         >
+        android:text="@string/label_date_visit" />
 
-    </ExpandableListView>
+    <DatePicker
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    
+    
+    <TextView
+        android:id="@+id/visitpurpose_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_visit_purpose" />
+
+     <Spinner
+         android:id="@+id/visitpurpose"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+          >
+
+    </Spinner>
+  
+
+          
 
 </LinearLayout>
 <Button 
@@ -115,4 +137,5 @@ android:text="@string/but_next">
 </Button> 
 
 </FrameLayout> 
+</ScrollView>
 </RelativeLayout>

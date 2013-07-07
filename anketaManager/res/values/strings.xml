@@ -16,6 +16,8 @@
 	
 	<string name="caption_choise">Выбрать</string>
 	
+	<string name="hint_login">Введите логин</string>
+	<string name="hint_password">Введите пароль</string>
 	<string name="hint_address">Введите адрес</string>
 	<string name="hint_customer">Введите покупателя</string>
 	<string name="hint_value">Введите значение</string>

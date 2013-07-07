@@ -8,12 +8,13 @@
 
 package ru.develop.anketamanager.xml;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+//import javax.xml.bind.annotation.XmlAccessType;
+//import javax.xml.bind.annotation.XmlAccessorType;
+//import javax.xml.bind.annotation.XmlElement;
+//import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -37,17 +38,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "References", propOrder = {
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "References", propOrder = {
 
-})
-public class References {
+//})
+public class References  implements Serializable{
 
-    @XmlElement(name = "Regions")
+   // @XmlElement(name = "Regions")
     protected List<Region> regions;
-    @XmlElement(name = "Activities")
+   // @XmlElement(name = "Activities")
     protected List<ActivityKind> activities;
-    @XmlElement(name = "VisitPurposes")
+   // @XmlElement(name = "VisitPurposes")
     protected List<VisitPurpose> visitPurposes;
 
     /**

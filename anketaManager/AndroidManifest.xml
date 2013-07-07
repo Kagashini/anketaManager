@@ -4,12 +4,14 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="16"
-         android:maxSdkVersion="17" />
+     <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="16" />
     
 	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE"/>
+	<permission  android:name="android.permission.INTERNET"></permission>	
 	
     <application
         android:allowBackup="true"
@@ -17,16 +19,17 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="ActivityMain"
+            android:name="ActivityStep1"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name="ActivityStep1"/>           
-        <activity android:name="ActivityStep2"/>            
-        <activity android:name="ActivityStep3"/>                  
+        </activity>    
+        <activity android:name="ActivityStep2"/>                    
+        <activity android:name="ActivityStep3"/>
+        <activity android:name="ActivityStep4"/>
+        <activity android:name="ActivityStep5"/>                  
         <activity android:name="ActivityStep6"/>           
     </application>
 </manifest>

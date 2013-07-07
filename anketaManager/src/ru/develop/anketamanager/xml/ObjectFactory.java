@@ -8,7 +8,7 @@
 
 package ru.develop.anketamanager.xml;
 
-import javax.xml.bind.annotation.XmlRegistry;
+//import javax.xml.bind.annotation.XmlRegistry;
 
 
 /**
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRegistry;
  * provided in this class.
  * 
  */
-@XmlRegistry
+//@XmlRegistry
 public class ObjectFactory {
 
 

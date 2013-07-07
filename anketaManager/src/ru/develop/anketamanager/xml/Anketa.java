@@ -8,15 +8,28 @@
 
 package ru.develop.anketamanager.xml;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.io.StreamCorruptedException;
+import java.util.GregorianCalendar;
 import java.util.List;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
+/*
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
-
+*/
 
 /**
  * <p>Java class for Anketa complex type.
@@ -45,30 +58,30 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Anketa", propOrder = {
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "Anketa", propOrder = {
 
-})
-public class Anketa {
+//})
+public class Anketa implements Serializable {
 
-    @XmlElement(name = "Customer", required = true)
+   // @XmlElement(name = "Customer", required = true)
     protected String customer;
-    @XmlElement(name = "Region", required = true)
+   // @XmlElement(name = "Region", required = true)
     protected Region region;
-    @XmlElement(name = "Address", required = true)
+   // @XmlElement(name = "Address", required = true)
     protected String address;
-    @XmlElement(name = "KindActivity", required = true)
+   // @XmlElement(name = "KindActivity", required = true)
     protected ActivityKind kindActivity;
-    @XmlElement(name = "Date", required = true)
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar date;
-    @XmlElement(name = "VisitPurpose", required = true)
+   // @XmlElement(name = "Date", required = true)
+   // @XmlSchemaType(name = "dateTime")
+    protected GregorianCalendar date;
+  //  @XmlElement(name = "VisitPurpose", required = true)
     protected VisitPurpose visitPurpose;
-    @XmlElement(name = "ProductRange")
+  //  @XmlElement(name = "ProductRange")
     protected List<AnketaProductInfo> productRanges;
-    @XmlElement(name = "AdditionInfo", required = true)
+ //   @XmlElement(name = "AdditionInfo", required = true)
     protected AnketaAdditionInfo additionInfo;
-    @XmlElement(name = "MarketInfo", required = true)
+ //   @XmlElement(name = "MarketInfo", required = true)
     protected AnketaMarketInfo marketInfo;
 
     /**
@@ -175,7 +188,7 @@ public class Anketa {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getDate() {
+    public GregorianCalendar getDate() {
         return date;
     }
 
@@ -187,7 +200,7 @@ public class Anketa {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDate(XMLGregorianCalendar value) {
+    public void setDate(GregorianCalendar value) {
         this.date = value;
     }
 
@@ -287,4 +300,18 @@ public class Anketa {
         this.marketInfo = value;
     }
 
+    
+    public void save(File file) throws IOException {
+    	FileOutputStream fos = new FileOutputStream(file);
+    	ObjectOutputStream os = new ObjectOutputStream(fos);
+    	os.writeObject(this);
+    	os.close();
+    }
+    public Anketa load(File file) throws StreamCorruptedException, IOException, ClassNotFoundException {
+    	FileInputStream fis =  new FileInputStream(file);
+    	ObjectInputStream is = new ObjectInputStream(fis);
+    	Anketa anketa = (Anketa) is.readObject();
+    	is.close();
+    	return anketa;
+    }
 }

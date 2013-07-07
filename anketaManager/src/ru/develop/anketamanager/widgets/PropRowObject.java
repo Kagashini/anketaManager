@@ -21,23 +21,37 @@ public class PropRowObject
 		//Получим свойства
 		public static PropRowObject [] getProps(Object rowObject,boolean sort)
 		{
-			List<PropRowObject> res= new ArrayList<PropRowObject >(); 
+			List<PropRowObject> res= new ArrayList<PropRowObject >(); 			
 			Dictionary<String,PropRowObject > res_tmp= new Hashtable<String,PropRowObject >(); 		
+			if(rowObject!=null)
+			{
 			Method [] ms = rowObject.getClass().getDeclaredMethods();
 			for(Method m:ms)
 			{			
-				String _name =m.getName();
+				String _name = m.getName();
+				boolean s=false;
+				boolean g=false;
+				if(_name.startsWith("get")||_name.startsWith("set"))
+				{					
+					s = _name.startsWith("set");
+					g = _name.startsWith("get");
+					_name = _name.substring(3);
+				} 
+				
 				PropRowObject  p = res_tmp.get(_name);			
 				p=p==null? new PropRowObject():p;			
-				p.CanRead = _name.startsWith("get");
-				p.CanWrite = _name.startsWith("set");
-				if(p.CanRead||p.CanWrite)
+				if(g)
+					p.CanRead = g;
+				if(s)
+					p.CanWrite = s;
+				if(p.Name==null)
 				{
 					p.Name = _name;
 					res_tmp.put(_name, p);
 					res.add(p);
 				}
 				
+			}
 			}
 			
 			PropRowObject  [] r = new PropRowObject[res.size()];
@@ -63,7 +77,7 @@ public class PropRowObject
 			try {
 				m = rowObject
 						 			.getClass()
-						 			.getMethod(propName);
+						 			.getMethod("get"+propName);
 			} catch (NoSuchMethodException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

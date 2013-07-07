@@ -8,11 +8,14 @@
 
 package ru.develop.anketamanager.xml;
 
+import java.io.Serializable;
+
+/*
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
+*/
 
 /**
  * <p>Java class for ActivityKind complex type.
@@ -34,15 +37,15 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ActivityKind", propOrder = {
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "ActivityKind", propOrder = {
 
-})
-public class ActivityKind {
+//})
+public class ActivityKind  implements Serializable {
 
-    @XmlElement(name = "\u041a\u043e\u0434", required = true)
+    //@XmlElement(name = "\u041a\u043e\u0434", required = true)
     protected Object код;
-    @XmlElement(name = "\u041d\u0430\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u043d\u0438\u0435", required = true)
+    //@XmlElement(name = "\u041d\u0430\u0438\u043c\u0435\u043d\u043e\u0432\u0430\u043d\u0438\u0435", required = true)
     protected Object наименование;
 
     /**

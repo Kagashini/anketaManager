@@ -5,5 +5,5 @@
 // Generated on: 2013.07.04 at 02:39:05 PM NOVT 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://tempuri.org/XMLSchema.xsd", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+//@javax.xml.bind.annotation.XmlSchema(namespace = "http://tempuri.org/XMLSchema.xsd", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package ru.develop.anketamanager.xml;
