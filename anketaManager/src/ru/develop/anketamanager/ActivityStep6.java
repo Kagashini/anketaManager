@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.lang.ref.Reference;
+import java.util.Iterator;
+import java.util.List;
 
 import ru.develop.anketamanager.ftp.FtpSendTask;
 import ru.develop.anketamanager.widget.dialog.FileDialog;
@@ -12,10 +14,14 @@ import ru.develop.anketamanager.widget.dialog.IFileDialogDepends;
 import ru.develop.anketamanager.xml.Anketa;
 import ru.develop.anketamanager.xml.MediaDeviceXCG;
 import ru.develop.anketamanager.xml.References;
+import android.R.string;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -87,23 +93,27 @@ public class ActivityStep6 extends Activity implements OnClickListener{
     	    startActivity(intent);
        	 break;  
         case R.id.but_Send:
-        	refresh(new File("/mnt/sdcard/anketa.xml")); 
+        	refresh(MediaDeviceXCG.getDefaultFile(this,"anketa")); 
         	//fd.openFileDialog(fdd);
        	 break;  
 		}			
 		
 	}
 	
+	
+	
+	
 	void refresh(File file)
 	{
 	  try {
-		anketa.save(new File("/mnt/sdcard/anketa2.xml"));
+		anketa.save(file);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	  References refs = MediaDeviceXCG.LoadRefs(new File("/mnt/sdcard/anketa.xml"));
-	  MediaDeviceXCG.Save(file,anketa,refs);
+	  
+	 // References refs = MediaDeviceXCG.LoadRefs(MediaDeviceXCG.getDefaultFile(this,"anketa"));
+	  MediaDeviceXCG.Save(file,anketa,null);
 	  FtpSendTask ft = new FtpSendTask("-s -b <hostname> <username> <password> <remote file> <local file>",error);
 	  		
 	}

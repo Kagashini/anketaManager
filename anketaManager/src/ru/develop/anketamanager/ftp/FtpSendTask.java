@@ -2,7 +2,10 @@ package ru.develop.anketamanager.ftp;
 
 
 
+import java.io.File;
 import java.net.UnknownHostException;
+
+import ru.develop.anketamanager.xml.MediaDeviceXCG;
 
 import android.os.AsyncTask;
 import android.widget.TextView;
@@ -33,20 +36,27 @@ public class FtpSendTask extends AsyncTask<String, Integer, Void> {
 	    @Override
 	    protected void onPreExecute() {
 	      super.onPreExecute();
-	      _progressInfoElement.setText("Begin");
+	      regInfo("Получение файла с FTP-сервера! Пожалуйста подождите!");
 	    }
 
 	    @Override
 	    protected Void doInBackground(String... urls) {
-	    	 try
-				{			
-					FTPAgent.Exec(_cmd, new StringOutputStream(_progressInfoElement),this);
-					//publishProgress();
-				}
-				catch(UnknownHostException exc)
-				{
-					regError(exc.getMessage());
-				}	   
+	    			
+	    	try
+	    	{
+				//MyFTPClient client = new MyFTPClient(_progressInfoElement);				        
+				// if(client.ftpConnect("62.213.82.99","crm_user", "nbkRen889", 21))
+				// {
+				//	 client.ftpDownload("anketa.xml",_progressInfoElement.getContext().getFilesDir()+"/anketa.xml");
+				//	 client.ftpDisconnect();
+				// }
+	    		 FTPAgent.Exec(_cmd, new StringOutputStream(_progressInfoElement),this);
+			     publishProgress();			  	 
+	    	}
+	    	catch(Exception exc)
+	    	{
+	    		regError(exc.getMessage());	    	
+	    	}
 	      return null;
 	    }
 
@@ -60,13 +70,13 @@ public class FtpSendTask extends AsyncTask<String, Integer, Void> {
 	    @Override
 	    protected void onPostExecute(Void result) {
 	      super.onPostExecute(result);
-	      regInfo("End");
+	      regInfo("Задача получение файла с FTP-сервера, завершена!");	      
 	    }
 	    
 	    
 	    protected void onCancelled() {
 	        super.onCancelled();
-	        regError("Cancel");
+	        regError("Выполнена отмена задачи получения файла с FTP-сервера!");
 	        
 	      }  
 	

@@ -12,6 +12,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.SimpleFormatter;
 
@@ -20,6 +21,12 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 import org.xmlpull.v1.XmlSerializer;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.os.Environment;
+import android.provider.ContactsContract.Directory;
 import android.util.Log;
 import android.util.Xml;
 
@@ -33,6 +40,13 @@ import ru.develop.anketamanager.xml.Anketa;
 
 public class MediaDeviceXCG
 {
+	public static File getDefaultFile(Context context,String file_name)
+	{				
+		File res = new File(context.getFilesDir(),file_name+".xml");			
+		return res;
+	}
+	
+	
 	
 	public static References LoadRefs(File file)// throws JAXBException
 	{

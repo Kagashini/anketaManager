@@ -62,10 +62,7 @@
       android:layout_height="wrap_content"
       android:ems="10"
       android:hint="@string/hint_value" >
-
-        <requestFocus android:layout_width="match_parent" />
-
-    </EditText>
+   </EditText>
 
   <TextView    
     android:layout_width="match_parent"
@@ -77,10 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/hint_value" >
-
-        <requestFocus android:layout_width="match_parent" />
-
+        android:hint="@string/hint_value" >  
     </EditText>
   
   <TextView
@@ -95,10 +89,7 @@
       android:layout_height="wrap_content"
       android:ems="10"
       android:hint="@string/hint_value"
-      android:inputType="number" >
-
-        <requestFocus android:layout_width="match_parent" />
-
+      android:inputType="number" >     
     </EditText>
   
   <TextView
@@ -113,10 +104,7 @@
       android:layout_height="wrap_content"
       android:ems="10"
       android:hint="@string/hint_value"
-      android:inputType="numberDecimal" >
-
-        <requestFocus android:layout_width="match_parent" />
-
+      android:inputType="numberDecimal" >       
     </EditText>
   
   
@@ -133,9 +121,7 @@
       android:ems="10"
       android:hint="@string/hint_value"
       android:inputType="numberDecimal" >
-
-        <requestFocus android:layout_width="match_parent" />
-
+ 
     </EditText>
   
   
@@ -151,8 +137,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/hint_value" >
-
-        <requestFocus android:layout_width="match_parent" />
 
     </EditText>
     
@@ -170,8 +154,6 @@
         android:ems="10"
         android:hint="@string/hint_value" >
 
-        <requestFocus android:layout_width="match_parent" />
-
     </EditText>
   
    <TextView
@@ -187,8 +169,7 @@
         android:ems="10"
         android:hint="@string/hint_value" >
 
-        <requestFocus android:layout_width="match_parent" />
-
+ 
     </EditText>
   
   

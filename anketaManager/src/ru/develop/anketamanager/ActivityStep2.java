@@ -47,7 +47,7 @@ public class ActivityStep2 extends Activity implements OnClickListener{
 				
 		refs=MediaDeviceXCG.LoadRefs(new File("/mnt/sdcard/anketa.xml"));
 		
-		customer = (EditText) findViewById(R.id.expressdeliveries);
+		customer = (EditText) findViewById(R.id.customer);
 		address = (EditText) findViewById(R.id.address);
 		date = (DatePicker) findViewById(R.id.date);
 		region = (Spinner) findViewById(R.id.region);

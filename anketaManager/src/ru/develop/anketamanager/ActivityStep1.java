@@ -1,9 +1,16 @@
 package ru.develop.anketamanager;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.Serializable;
+import java.net.SocketException;
+
+import org.apache.commons.net.ftp.FTPClient;
+
 
 import ru.develop.anketamanager.ftp.FtpSendTask;
+import ru.develop.anketamanager.ftp.MyFTPClient;
 import ru.develop.anketamanager.widget.dialog.FileDialog;
 import ru.develop.anketamanager.widget.dialog.IFileDialogDepends;
 import ru.develop.anketamanager.xml.Anketa;
@@ -38,7 +45,7 @@ public class ActivityStep1 extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_anketa_step1);
 		
-		ru.develop.anketamanager.xml.Init.Start();
+		ru.develop.anketamanager.xml.Init.Start(this);
 		
 		
 		but = (Button)findViewById(R.id.but_login);
@@ -58,7 +65,8 @@ public class ActivityStep1 extends Activity implements OnClickListener{
 		
 		anketa = (Anketa)getIntent().getSerializableExtra("anketa");
 		 
-		if(anketa==null) anketa = MediaDeviceXCG.Load(new File("/mnt/sdcard/anketa.xml"));
+		
+		if(anketa==null) anketa = MediaDeviceXCG.Load(MediaDeviceXCG.getDefaultFile(this, "anketa"));
 				 
 	}
 
@@ -70,14 +78,21 @@ public class ActivityStep1 extends Activity implements OnClickListener{
 		Intent intent=null;
 		
 		switch (v.getId()) {       
-        case R.id.but_login:     
-        	FtpSendTask ft = new FtpSendTask("-b <hostname> <username> <password> <remote file> <local file>",error);
+        case R.id.but_login:                     	
         	
+        	FtpSendTask ft = new FtpSendTask("-b 62.213.82.99 "+user.getText().toString()+" "+password.getText().toString()+" anketa.xml "+MediaDeviceXCG.getDefaultFile(this, "anketa"),error);
+        	ft.execute();
+        	//try {
+			//	ft.wait();
+			
         	
-    		intent= new Intent(this, ActivityStep2.class);
-    		intent.putExtra("anketa",anketa);    		
-    	    startActivity(intent);
-    	    
+    		//intent= new Intent(this, ActivityStep2.class);
+    		//intent.putExtra("anketa",anketa);    		
+    	    //startActivity(intent);
+        	//} catch (InterruptedException e) {
+			//	// TODO Auto-generated catch block
+			//	e.printStackTrace();
+			//}
        	 break;
                	
 		}			

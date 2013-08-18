@@ -20,6 +20,8 @@ import javax.xml.parsers.DocumentBuilder;
 import org.xmlpull.v1.XmlSerializer;
 
 import android.app.Activity;
+import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 import android.util.Xml;
 
@@ -29,7 +31,7 @@ import android.util.Xml;
 
 public class Init {
  
-public static void Start() //throws JAXBException
+public static void Start(Context context) //throws JAXBException
  {
 	 ObjectFactory factory = new ObjectFactory();
 	 References refs = factory.createReferences();
@@ -81,7 +83,7 @@ public static void Start() //throws JAXBException
 	 refs.setActivities(acts);		 
 	 refs.setRegions(regs);
 	 refs.setVisitPurposes(visits);
-	 ru.develop.anketamanager.xml.MediaDeviceXCG.Save(new File("/mnt/sdcard/anketa.xml"),null,refs);
+	 ru.develop.anketamanager.xml.MediaDeviceXCG.Save(MediaDeviceXCG.getDefaultFile(context,"anketa_start"),null,refs);
 	// JAXBContext context = JAXBContext.newInstance("generated");		 
 	// Marshaller marshaller = context.createMarshaller();
 	 //marshaller.setProperty("anketa.input",Boolean.TRUE);
