@@ -21,6 +21,8 @@
 	<string name="hint_address">Введите адрес</string>
 	<string name="hint_customer">Введите покупателя</string>
 	<string name="hint_value">Введите значение</string>
+	<string name="hint_directory">Рабочая папка пользователя</string>
+	<string name="hint_directory_error">Папка с таким названием на сервере отсутствует!</string>
 	
 	<string name="label_settings">Настройки</string>
 	<string name="label_server">Сервер</string>
@@ -28,6 +30,7 @@
 	<string name="label_login">Логин</string>
 	<string name="label_password">Пароль</string>
 	<string name="label_topsecret">Использовать FTPS</string>
+	<string name="label_directory">Рабочая папка пользователя</string>
 	
 	<string name="label_customer">Покупатель</string>
 	<string name="label_region">Город/Регион</string>

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import ru.develop.anketamanager.utils.util_login_pass;
 import ru.develop.anketamanager.xml.Anketa;
 import ru.develop.anketamanager.xml.AnketaAdditionInfo;
 import ru.develop.anketamanager.xml.MediaDeviceXCG;
@@ -17,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class ActivityStep4 extends Activity implements OnClickListener{
-	
+	util_login_pass keyPair=null;
 	Anketa anketa=null;
 	Button but_prev;
 	Button but_next;
@@ -46,7 +47,7 @@ public class ActivityStep4 extends Activity implements OnClickListener{
 				but_prev.setOnClickListener(this);
 		
 		   anketa = (Anketa)getIntent().getSerializableExtra("anketa");
-			
+		   keyPair = (util_login_pass)getIntent().getSerializableExtra("keypair");
 	}
 
 	private void setData()
@@ -106,6 +107,7 @@ public class ActivityStep4 extends Activity implements OnClickListener{
     		intent= new Intent(this, ActivityStep5.class);
     		setData();
     		intent.putExtra("anketa",anketa);
+    		intent.putExtra("keypair", keyPair);
     	    startActivity(intent);
        	 break;
         case R.id.but_prev:
@@ -113,6 +115,7 @@ public class ActivityStep4 extends Activity implements OnClickListener{
     		intent= new Intent(this, ActivityStep3.class);
     		setData();
     		intent.putExtra("anketa",anketa);
+    		intent.putExtra("keypair", keyPair);
     	    startActivity(intent);
        	 	break;       	 
 		}			

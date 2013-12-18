@@ -23,7 +23,6 @@ import org.apache.commons.net.io.CopyStreamListener;
 import org.apache.commons.net.util.TrustManagerUtils;
 
 import android.util.Log;
-import android.widget.TextView;
 
 
 public final class FTPAgent {
@@ -238,16 +237,21 @@ public final class FTPAgent {
 
         // suppress login details
         //ftp.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out), true));
+        
+        
         ftp.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(sos),true));
         
         try
         {
             int reply;
+            sos.info("Установка соединения с сервером " + server + " по порту " + (port>0 ? port : ftp.getDefaultPort()));
+            
             if (port > 0) {
                 ftp.connect(server, port);
             } else {
                 ftp.connect(server);
             }
+            
             //System.out.println("Connected to " + server + " on " + (port>0 ? port : ftp.getDefaultPort()));
             Log.i(tagLog, "Connected to " + server + " on " + (port>0 ? port : ftp.getDefaultPort()));
             // After connection attempt, you should check the reply code to verify
@@ -256,8 +260,10 @@ public final class FTPAgent {
 
             if (!FTPReply.isPositiveCompletion(reply))
             {
+            	sos.set_Fail();
                 ftp.disconnect();
                 //System.err.println("FTP server refused connection.");
+                sos.error("FTP сервер сбросил соединение");
                 Log.e(tagLog,"FTP server refused connection.");
             }
         }
@@ -276,8 +282,9 @@ public final class FTPAgent {
             }
             //System.err.println("Could not connect to server.");
             Log.e(tagLog,"Could not connect to server.");
+            sos.error("Не удалось соединится с сервером.");
             e.printStackTrace();
-            
+            sos.set_Fail();
         }
 
 __main:
@@ -285,8 +292,10 @@ __main:
         {
             if (!ftp.login(username, password))
             {
+            	sos.set_IncorrectLogin();
                 ftp.logout();
                 error = true;
+                sos.set_Fail();               
                 break __main;
             }
 
@@ -374,6 +383,8 @@ __main:
                         } else {
                         //    System.out.println("Command failed: "+ftp.getReplyString());
                             Log.i(tagLog,"Command failed: "+ftp.getReplyString());
+                            sos.error("Неверная команда: "+ftp.getReplyString());
+                            sos.set_Fail();
                         }
                     }
 
@@ -391,6 +402,8 @@ __main:
                         } else {
                           //  System.out.println("Command failed: "+ftp.getReplyString());
                             Log.i(tagLog,"Command failed: "+ftp.getReplyString());
+                            sos.error("Неверная команда: "+ftp.getReplyString());
+                            sos.set_Fail();
                         }
                     }
                 } else {
@@ -399,6 +412,8 @@ __main:
                     } else {
                       //  System.out.println("Failed: "+ftp.getReplyString());
                         Log.i(tagLog,"Failed: "+ftp.getReplyString());
+                        sos.error("Ошибка: "+ftp.getReplyString());
+                        sos.set_Fail();
                     }
                 }
             }
@@ -412,6 +427,8 @@ __main:
                 } else {
                   //  System.out.println("Failed: "+ftp.getReplyString());
                     Log.i(tagLog,"Failed: "+ftp.getReplyString());
+                    sos.error("Ошибка: "+ftp.getReplyString());
+                    sos.set_Fail();
                 }
             }
             else
@@ -434,13 +451,16 @@ __main:
             error = true;
            // System.err.println("Server closed connection.");
             Log.e(tagLog,"Server closed connection.");
+            sos.error("Соединение с сервером закрыто");
             e.printStackTrace();
+            sos.set_Fail();
         }
         catch (IOException e)
         {
             error = true;
            // e.printStackTrace();
             Log.e(tagLog,e.getMessage());
+            sos.set_Fail();
         }
         finally
         {
@@ -458,6 +478,7 @@ __main:
             }
         }
 
+       
         return !error;
     } 
 	   private static CopyStreamListener createListener(){

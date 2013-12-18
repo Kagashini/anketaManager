@@ -31,7 +31,7 @@ import android.util.Xml;
 
 public class Init {
  
-public static void Start(Context context) //throws JAXBException
+public static void Start4(Context context) //throws JAXBException
  {
 	 ObjectFactory factory = new ObjectFactory();
 	 References refs = factory.createReferences();

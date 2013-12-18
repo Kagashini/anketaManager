@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import ru.develop.anketamanager.utils.util_login_pass;
 import ru.develop.anketamanager.widgets.Adapters.AnketaGridAdapter;
 import ru.develop.anketamanager.xml.ActivityKind;
 import ru.develop.anketamanager.xml.Anketa;
@@ -29,7 +30,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 public class ActivityStep3 extends Activity implements OnClickListener{
-	
+	util_login_pass keyPair=null;
 	TableLayout table=null; 
 	Anketa anketa=null;
 	Button but_prev;
@@ -48,7 +49,7 @@ public class ActivityStep3 extends Activity implements OnClickListener{
 				but_prev.setOnClickListener(this);
 			
 		anketa =(Anketa) getIntent().getSerializableExtra("anketa");		
-			
+		keyPair = (util_login_pass)getIntent().getSerializableExtra("keypair");	
 		table = (TableLayout)findViewById(R.id.table);
 		if(table!=null)
 		{			
@@ -140,12 +141,14 @@ public class ActivityStep3 extends Activity implements OnClickListener{
     		intent= new Intent(this, ActivityStep4.class);
     		setData();
     		intent.putExtra("anketa",anketa);
+    		intent.putExtra("keypair", keyPair);
     	    startActivity(intent);
        	 break;
         case R.id.but_prev:        	
     		intent= new Intent(this, ActivityStep2.class);
     		setData();
     		intent.putExtra("anketa",anketa);
+    		intent.putExtra("keypair", keyPair);
     	    startActivity(intent);
        	 	break;       	 
 		}			

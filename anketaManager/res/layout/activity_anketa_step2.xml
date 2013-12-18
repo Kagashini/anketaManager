@@ -1,5 +1,5 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="fill"
@@ -8,6 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ActivityStep3" >
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -26,96 +27,13 @@ android:layout_height="match_parent">
     android:layout_gravity="fill_horizontal|center_vertical"
     android:orientation="vertical" >
 
-<TextView
-    android:id="@+id/customer_label"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/label_customer" />
-
-    <EditText
-        android:id="@+id/customer"
+    <ListView
+        android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/hint_customer" >
+        android:headerDividersEnabled="true" >
 
-        <requestFocus android:layout_width="match_parent" />
-
-    </EditText>
-
-    <TextView
-        android:id="@+id/region_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_region" />
-    
-    <Spinner
-	    android:id="@+id/region"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-	</Spinner>
-
-    
-      <TextView
-        android:id="@+id/address_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_addess" />
-
-    <EditText
-        android:id="@+id/address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
-        android:ems="10"
-        android:hint="@string/hint_address" >
-
-      
-    </EditText>
-    
-    
-    
-    <TextView
-        android:id="@+id/kindactivity_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_kind_activity" />
-
-     <Spinner
-         android:id="@+id/kindactivity"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-        >
-
-    </Spinner>
-    
-    <TextView
-        android:id="@+id/date_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_date_visit" />
-
-    <DatePicker
-        android:id="@+id/date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    
-    
-    <TextView
-        android:id="@+id/visitpurpose_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_visit_purpose" />
-
-     <Spinner
-         android:id="@+id/visitpurpose"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-          >
-
-    </Spinner>
+    </ListView>
   
 
           

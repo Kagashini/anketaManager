@@ -3,10 +3,14 @@ package ru.develop.anketamanager.xml;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -26,6 +30,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Environment;
+import android.os.MemoryFile;
 import android.provider.ContactsContract.Directory;
 import android.util.Log;
 import android.util.Xml;
@@ -45,7 +50,6 @@ public class MediaDeviceXCG
 		File res = new File(context.getFilesDir(),file_name+".xml");			
 		return res;
 	}
-	
 	
 	
 	public static References LoadRefs(File file)// throws JAXBException
@@ -68,8 +72,22 @@ public class MediaDeviceXCG
 		    
 		    // даем парсеру на вход Reader
 		    
+	
+		    byte [] magicTag = new byte [3]; 
+		    FileInputStream sd =  new FileInputStream(file);		    
+		    sd.read(magicTag);
+        	boolean n_ofs=(magicTag[0]==-17&&magicTag[1]==-69&&magicTag[2]==-65);
+        	sd.close();
+        	
 	            // открываем поток для записи
-	        	BufferedReader rd = new BufferedReader(new FileReader(file));
+        		BufferedReader rd = null;
+        		
+        		if(n_ofs) 
+        			rd = new BufferedReader(new InputStreamReader(sd,"UTF-8"));
+        			else
+	        	    rd = new BufferedReader(new FileReader(file));
+	        	
+	        	
 	        	xpp.setInput(rd);
 	        	            
 	        //
@@ -368,7 +386,6 @@ public class MediaDeviceXCG
 	        throw new RuntimeException(e);
 	    } 
    }
-   
    
    
    private static boolean IsArray(Object o)
