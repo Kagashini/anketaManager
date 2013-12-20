@@ -42,6 +42,7 @@ import ru.develop.anketamanager.widgets.PropRowObject;
 //import javax.xml.bind.Unmarshaller;
 
 import ru.develop.anketamanager.xml.Anketa;
+import ru.develop.anketamanager.xmlnew.General;
 
 public class MediaDeviceXCG
 {

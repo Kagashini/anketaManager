@@ -77,6 +77,27 @@ android:layout_height="match_parent">
       <requestFocus />
 
   </EditText>
+
+  <FrameLayout
+      android:id="@+id/loading_indicator"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" >
+
+  </FrameLayout>
+
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" >
+
+	  <TextView
+	      android:id="@+id/error_loading_indicator"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content"
+	      android:layout_gravity="center_horizontal"
+	      android:gravity="center"	      
+	      />
+
+  </FrameLayout>
   
     <CheckBox
         android:id="@+id/save_my_account"

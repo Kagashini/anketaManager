@@ -3,6 +3,12 @@ package ru.develop.anketamanager.ftp;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.net.ftp.FTPFile;
 
 import android.os.Handler;
 import android.os.Message;
@@ -41,6 +47,43 @@ public class StringOutputStream extends OutputStream {
 	  return flag_execute == 3;
 	 }
 	 
+	 public boolean get_Fail()
+	 {
+	  return flag_execute == 1;
+	 }
+	 
+	 int code_reply_cmd=0;	 
+	 
+	 public void hold_reply(int s)
+	 {		 
+		 code_reply_cmd = s;
+	 }
+	 
+	 public boolean checkChangeDirSuccess()
+	 {
+		 return code_reply_cmd==250;		 
+	 }
+	 
+	 
+	 List<String> _listFiles = new ArrayList<String>();
+     public void BeginListFiles()
+     {
+    	 _listFiles.clear(); 
+     }
+
+     
+     public void AddListFiles(String filename)
+     {
+    	 _listFiles.add(filename);     
+     }
+
+     public String [] getFileList()
+     {
+    	 String [] result = new String[_listFiles.size()];
+    	 for(int r=0;r<result.length;r++)
+    		 result[r]=_listFiles.get(r);
+    	 return result;
+     }
 	 
 	 public void info(String text)
 	 {

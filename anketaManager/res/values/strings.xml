@@ -12,7 +12,7 @@
 	<string name="but_save">Сохранить</string>
 	<string name="but_settings">Настройки</string>
 	<string name="but_send">Отправить</string>
-	
+	<string name="but_quit">Выйти</string>
 	
 	<string name="caption_choise">Выбрать</string>
 	
@@ -21,7 +21,7 @@
 	<string name="hint_address">Введите адрес</string>
 	<string name="hint_customer">Введите покупателя</string>
 	<string name="hint_value">Введите значение</string>
-	<string name="hint_directory">Рабочая папка пользователя</string>
+	<string name="hint_directory">Введите сюда название папки пользователя</string>
 	<string name="hint_directory_error">Папка с таким названием на сервере отсутствует!</string>
 	
 	<string name="label_settings">Настройки</string>
@@ -64,5 +64,19 @@
 	
 	<string name="label_param_name">Название параметр</string>
 	<string name="label_param_value">Значение параметра</string>
-		
+	
+	<string name="ftp_server">62.213.82.99</string>
+	<string name="ftp_user">crm_user</string>
+	<string name="ftp_pass">nbkRen889</string>	
+	
+	
+	
+	<string name="label_s3_number">Номер анкеты:</string>
+	<string name="label_s3_date">Дата планируемого посещения:</string>
+	<string name="label_s3_initiator">Инициатор:</string>
+	<string name="label_s3_customer">Контрагент:</string>
+	<string name="label_s3_contact">Контактное лицо:</string>
+	<string name="label_s3_trademark">Торговая точка:</string>
+	<string name="label_s3_address">Адрес:</string>
+	<string name="label_s3_visitpurpose">Цель визита:</string>
 </resources>

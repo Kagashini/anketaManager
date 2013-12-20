@@ -8,51 +8,64 @@
 package ru.develop.anketamanager;
 
 public final class R {
+    public static final class anim {
+        public static final int loading=0x7f040000;
+    }
     public static final class attr {
     }
     public static final class color {
-        public static final int error=0x7f070000;
+        public static final int error=0x7f080000;
+        public static final int indicator=0x7f080001;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int adv_companies_competitors=0x7f08001a;
-        public static final int amount_deliveries=0x7f08000f;
-        public static final int but_Save=0x7f08001d;
-        public static final int but_Send=0x7f08001c;
-        public static final int but_cancel=0x7f080008;
-        public static final int but_login=0x7f080007;
-        public static final int but_next=0x7f08000b;
-        public static final int but_prev=0x7f08000a;
-        public static final int count_outlets=0x7f080016;
-        public static final int customer=0x7f080012;
-        public static final int direct_purchase=0x7f080013;
-        public static final int directory=0x7f080004;
-        public static final int discounts_competitors=0x7f080019;
-        public static final int error_login=0x7f080006;
-        public static final int express_deliveries=0x7f08000e;
-        public static final int frameLayout1=0x7f080000;
-        public static final int intro_prodiuctlines=0x7f080010;
-        public static final int linearstep2=0x7f080001;
-        public static final int listView1=0x7f080009;
-        public static final int login=0x7f080002;
-        public static final int my_password=0x7f080003;
-        public static final int promo_brand=0x7f08001b;
-        public static final int pusrchase_competitors=0x7f080014;
-        public static final int save_my_account=0x7f080005;
-        public static final int share_of_total_terema=0x7f080018;
-        public static final int supplier_competitors=0x7f080015;
-        public static final int table=0x7f08000c;
-        public static final int to_order=0x7f08000d;
-        public static final int total_turnover=0x7f080017;
-        public static final int training_seminar=0x7f080011;
+        public static final int adv_companies_competitors=0x7f090023;
+        public static final int but_Save=0x7f090025;
+        public static final int but_Send=0x7f09001b;
+        public static final int but_cancel=0x7f09000a;
+        public static final int but_login=0x7f090009;
+        public static final int but_next=0x7f09000d;
+        public static final int but_prev=0x7f09000c;
+        public static final int but_quit=0x7f090017;
+        public static final int count_outlets=0x7f09001f;
+        public static final int direct_purchase=0x7f09001c;
+        public static final int directory=0x7f090004;
+        public static final int discounts_competitors=0x7f090022;
+        public static final int error_loading_indicator=0x7f090006;
+        public static final int error_login=0x7f090008;
+        public static final int footer_button=0x7f090018;
+        public static final int frameLayout1=0x7f090000;
+        public static final int indicator=0x7f09001a;
+        public static final int itemList=0x7f090026;
+        public static final int linearLayout1=0x7f09000e;
+        public static final int linearstep2=0x7f090001;
+        public static final int listView1=0x7f09000b;
+        public static final int loading_indicator=0x7f090005;
+        public static final int login=0x7f090002;
+        public static final int my_password=0x7f090003;
+        public static final int promo_brand=0x7f090024;
+        public static final int pusrchase_competitors=0x7f09001d;
+        public static final int s3_address=0x7f090015;
+        public static final int s3_contact=0x7f090013;
+        public static final int s3_customer=0x7f090012;
+        public static final int s3_date=0x7f090010;
+        public static final int s3_initiator=0x7f090011;
+        public static final int s3_number=0x7f09000f;
+        public static final int s3_trademark=0x7f090014;
+        public static final int s3_visitpurpose=0x7f090016;
+        public static final int save_my_account=0x7f090007;
+        public static final int share_of_total_terema=0x7f090021;
+        public static final int supplier_competitors=0x7f09001e;
+        public static final int table_brands=0x7f090019;
+        public static final int total_turnover=0x7f090020;
     }
     public static final class layout {
         public static final int activity_anketa_step1=0x7f030000;
@@ -69,63 +82,76 @@ public final class R {
     http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
     
          */
-        public static final int activity_item_list=0x7f030006;
+        public static final int activity_item_list=0x7f030007;
+        public static final int item_list=0x7f030006;
     }
     public static final class string {
-        public static final int app_name=0x7f050000;
-        public static final int but_cancel=0x7f050003;
-        public static final int but_load=0x7f050007;
-        public static final int but_login=0x7f050006;
-        public static final int but_next=0x7f050004;
-        public static final int but_ok=0x7f050002;
-        public static final int but_prev=0x7f050005;
-        public static final int but_save=0x7f050008;
-        public static final int but_send=0x7f05000a;
-        public static final int but_settings=0x7f050009;
-        public static final int caption_choise=0x7f05000b;
-        public static final int hint_address=0x7f05000e;
-        public static final int hint_customer=0x7f05000f;
-        public static final int hint_directory=0x7f050011;
-        public static final int hint_directory_error=0x7f050012;
-        public static final int hint_login=0x7f05000c;
-        public static final int hint_password=0x7f05000d;
-        public static final int hint_value=0x7f050010;
-        public static final int label_addess=0x7f05001c;
-        public static final int label_adv=0x7f050032;
-        public static final int label_adv_companies_competitors=0x7f05002c;
-        public static final int label_amount_deliveries=0x7f050022;
-        public static final int label_availability=0x7f050030;
-        public static final int label_brand=0x7f05002e;
-        public static final int label_comment=0x7f050033;
-        public static final int label_count_outlets=0x7f050028;
-        public static final int label_customer=0x7f05001a;
-        public static final int label_date_visit=0x7f05001e;
-        public static final int label_direct_purchase=0x7f050025;
-        public static final int label_directory=0x7f050019;
-        public static final int label_discounts_competitors=0x7f05002b;
-        public static final int label_express_deliveries=0x7f050021;
-        public static final int label_intro_product_lines=0x7f050023;
-        public static final int label_kind_activity=0x7f05001d;
-        public static final int label_login=0x7f050016;
-        public static final int label_param_name=0x7f050034;
-        public static final int label_param_value=0x7f050035;
-        public static final int label_password=0x7f050017;
-        public static final int label_port=0x7f050015;
-        public static final int label_promo_brand=0x7f05002d;
-        public static final int label_purchases_competitors=0x7f050026;
-        public static final int label_region=0x7f05001b;
-        public static final int label_server=0x7f050014;
-        public static final int label_settings=0x7f050013;
-        public static final int label_shared_of_total_terema=0x7f05002a;
-        public static final int label_stands=0x7f050031;
-        public static final int label_supplier_competitors=0x7f050027;
-        public static final int label_to_order=0x7f050020;
-        public static final int label_topsecret=0x7f050018;
-        public static final int label_total_turnover=0x7f050029;
-        public static final int label_training_seminar=0x7f050024;
-        public static final int label_turnover_of=0x7f05002f;
-        public static final int label_visit_purpose=0x7f05001f;
-        public static final int title_item_detail=0x7f050001;
+        public static final int app_name=0x7f060000;
+        public static final int but_cancel=0x7f060003;
+        public static final int but_load=0x7f060007;
+        public static final int but_login=0x7f060006;
+        public static final int but_next=0x7f060004;
+        public static final int but_ok=0x7f060002;
+        public static final int but_prev=0x7f060005;
+        public static final int but_quit=0x7f06000b;
+        public static final int but_save=0x7f060008;
+        public static final int but_send=0x7f06000a;
+        public static final int but_settings=0x7f060009;
+        public static final int caption_choise=0x7f06000c;
+        public static final int ftp_pass=0x7f060039;
+        public static final int ftp_server=0x7f060037;
+        public static final int ftp_user=0x7f060038;
+        public static final int hint_address=0x7f06000f;
+        public static final int hint_customer=0x7f060010;
+        public static final int hint_directory=0x7f060012;
+        public static final int hint_directory_error=0x7f060013;
+        public static final int hint_login=0x7f06000d;
+        public static final int hint_password=0x7f06000e;
+        public static final int hint_value=0x7f060011;
+        public static final int label_addess=0x7f06001d;
+        public static final int label_adv=0x7f060033;
+        public static final int label_adv_companies_competitors=0x7f06002d;
+        public static final int label_amount_deliveries=0x7f060023;
+        public static final int label_availability=0x7f060031;
+        public static final int label_brand=0x7f06002f;
+        public static final int label_comment=0x7f060034;
+        public static final int label_count_outlets=0x7f060029;
+        public static final int label_customer=0x7f06001b;
+        public static final int label_date_visit=0x7f06001f;
+        public static final int label_direct_purchase=0x7f060026;
+        public static final int label_directory=0x7f06001a;
+        public static final int label_discounts_competitors=0x7f06002c;
+        public static final int label_express_deliveries=0x7f060022;
+        public static final int label_intro_product_lines=0x7f060024;
+        public static final int label_kind_activity=0x7f06001e;
+        public static final int label_login=0x7f060017;
+        public static final int label_param_name=0x7f060035;
+        public static final int label_param_value=0x7f060036;
+        public static final int label_password=0x7f060018;
+        public static final int label_port=0x7f060016;
+        public static final int label_promo_brand=0x7f06002e;
+        public static final int label_purchases_competitors=0x7f060027;
+        public static final int label_region=0x7f06001c;
+        public static final int label_s3_address=0x7f060040;
+        public static final int label_s3_contact=0x7f06003e;
+        public static final int label_s3_customer=0x7f06003d;
+        public static final int label_s3_date=0x7f06003b;
+        public static final int label_s3_initiator=0x7f06003c;
+        public static final int label_s3_number=0x7f06003a;
+        public static final int label_s3_trademark=0x7f06003f;
+        public static final int label_s3_visitpurpose=0x7f060041;
+        public static final int label_server=0x7f060015;
+        public static final int label_settings=0x7f060014;
+        public static final int label_shared_of_total_terema=0x7f06002b;
+        public static final int label_stands=0x7f060032;
+        public static final int label_supplier_competitors=0x7f060028;
+        public static final int label_to_order=0x7f060021;
+        public static final int label_topsecret=0x7f060019;
+        public static final int label_total_turnover=0x7f06002a;
+        public static final int label_training_seminar=0x7f060025;
+        public static final int label_turnover_of=0x7f060030;
+        public static final int label_visit_purpose=0x7f060020;
+        public static final int title_item_detail=0x7f060001;
     }
     public static final class style {
         /** 
@@ -149,10 +175,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }

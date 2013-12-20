@@ -232,9 +232,11 @@ public final class FTPAgent {
         }
         if (controlKeepAliveReplyTimeout >= 0) {
             ftp.setControlKeepAliveReplyTimeout(controlKeepAliveReplyTimeout);
-        }
+        }        
         ftp.setListHiddenFiles(hidden);
 
+        ftp.setAutodetectUTF8(true);
+        
         // suppress login details
         //ftp.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out), true));
         
@@ -318,7 +320,7 @@ __main:
                 ftp.enterLocalPassiveMode();
             }
 
-            ftp.setUseEPSVwithIPv4(useEpsvWithIPv4);
+            ftp.setUseEPSVwithIPv4(useEpsvWithIPv4);            
 
             if (storeFile)
             {
@@ -338,7 +340,9 @@ __main:
                     ftp.configure(config );
                 }
 
+                sos.BeginListFiles();
                 for (FTPFile f : ftp.listFiles(remote)) {
+                	sos.AddListFiles(f.getName());
                 	Log.i(tagLog,f.getRawListing());
                 	Log.i(tagLog,f.toFormattedString());
                  //   System.out.println(f.getRawListing());
@@ -421,15 +425,16 @@ __main:
             {
                 if (ftp.doCommand(doCommand, remote)) {
 //                  Command listener has already printed the output
-//                    for(String s : ftp.getReplyStrings()) {
-//                        System.out.println(s);
-//                    }
+                    for(String s : ftp.getReplyStrings()) {                    	
+                        //System.out.println(s);                        
+                    }                    
                 } else {
                   //  System.out.println("Failed: "+ftp.getReplyString());
                     Log.i(tagLog,"Failed: "+ftp.getReplyString());
                     sos.error("Ошибка: "+ftp.getReplyString());
                     sos.set_Fail();
                 }
+                sos.hold_reply(ftp.getReplyCode());
             }
             else
             {

@@ -19,6 +19,7 @@ import ru.develop.anketamanager.xml.References;
 import ru.develop.anketamanager.xml.Region;
 import ru.develop.anketamanager.xml.VisitPurpose;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,18 +27,28 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 public class ActivityStep2 extends Activity implements OnClickListener{
 	
 	util_login_pass keyPair=null;
-	References refs=null;
-	Anketa anketa=null;
+	//References refs=null;
+	//Anketa anketa=null;
+
+	ru.develop.anketamanager.xmlnew.Anketa anketa=null;
 	Button but_prev;
 	Button but_next;
+	ListView list;
+	
+	
+	Context _currContext=null;   	    
+	Intent intent=null;
 	/*EditText customer;
 	EditText address;
 	Spinner region;
@@ -68,8 +79,52 @@ public class ActivityStep2 extends Activity implements OnClickListener{
 			if(but_prev!=null)
 				but_prev.setOnClickListener(this);
 		
-			anketa = (Anketa)getIntent().getSerializableExtra("anketa");
+			but_next.setEnabled(false);
+			
+			anketa = (ru.develop.anketamanager.xmlnew.Anketa)getIntent().getSerializableExtra("anketa");
 			keyPair = (util_login_pass)getIntent().getSerializableExtra("keypair");		
+			
+			if(keyPair==null)
+				keyPair = new util_login_pass();
+			
+			list = (ListView) findViewById(R.id.listView1);
+			list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+				public void onItemClick(android.widget.AdapterView<?> parent, View view, int position, long id) 
+				{					
+					but_next.setEnabled(true);
+					keyPair.setFile(
+							 (String) ((ArrayAdapter<String>)parent.getAdapter()).getItem(position)
+							 );							
+				};
+			});
+			 			 
+			String [] files;
+			
+			if(keyPair!=null)
+			{
+				File dir_in =new File(this.getFilesDir().getAbsolutePath(),keyPair.getDir()+"/"+FtpSendTask.inbox);
+				if(dir_in.exists()&&dir_in.isDirectory())
+				{
+					int cp=-1;
+					File [] _files = dir_in.listFiles();
+					files = new String[_files.length];
+					for(int f=0;f<_files.length;f++)
+					{
+					 files[f]=_files[f].getName();					 
+					 cp=files[f].equals(keyPair.getFile())?f:-1;
+					}
+					ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice,files);					
+					list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+					list.setAdapter(adapter);
+					if(cp>=0&&!keyPair.getFile().isEmpty())		
+					{
+						list.setItemChecked(cp, true);
+						but_next.setEnabled(true);
+					}
+				}
+			}
+			
+			
 		/*
 			if(region!=null)
 			{
@@ -91,10 +146,11 @@ public class ActivityStep2 extends Activity implements OnClickListener{
 	}
 
 	private void setData()
-	{
+	{		
+		/*		
 		if(anketa!=null)
 		{
-/*		
+
 		   anketa.setCustomer(customer.getText().toString());
 		   anketa.setAddress(customer.getText().toString());
 		   GregorianCalendar d = new GregorianCalendar();
@@ -103,9 +159,10 @@ public class ActivityStep2 extends Activity implements OnClickListener{
 		   anketa.setRegion((Region)region.getSelectedItem());
 		   anketa.setKindActivity((ActivityKind)kindactivity.getSelectedItem());
 		   anketa.setVisitPurpose((VisitPurpose)visitpurpose.getSelectedItem());
-		   */
+		   
 		   //MediaDeviceXCG.Save(new File("/mnt/sdcard/anketa.xml"),anketa);
 		}
+		*/
 	}
 	
 	   
@@ -117,8 +174,13 @@ public class ActivityStep2 extends Activity implements OnClickListener{
 		switch (v.getId()) {
         case R.id.but_next:
         	// TODO Auto-generated method stub
+        	
+        	File file_xml=new File(this.getFilesDir(),keyPair.getDir()+"/"+FtpSendTask.inbox+"/"+keyPair.getFile());
+    		if(file_xml.exists())
+    			anketa=ru.develop.anketamanager.xmlnew.Anketa.Load(file_xml);
+    		
     		intent= new Intent(this, ActivityStep3.class);
-    		setData();
+    		//setData();
     		intent.putExtra("anketa",anketa);   
     		intent.putExtra("keypair", keyPair);
     	    startActivity(intent);
@@ -126,7 +188,7 @@ public class ActivityStep2 extends Activity implements OnClickListener{
         case R.id.but_prev:
         	// TODO Auto-generated method stub
     		intent= new Intent(this, ActivityStep1.class);
-    		setData();
+    		//setData();
     		intent.putExtra("anketa",anketa);
     		intent.putExtra("keypair", keyPair);
     	    startActivity(intent);
