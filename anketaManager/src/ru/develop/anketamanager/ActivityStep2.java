@@ -19,6 +19,8 @@ import ru.develop.anketamanager.xml.References;
 import ru.develop.anketamanager.xml.Region;
 import ru.develop.anketamanager.xml.VisitPurpose;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -110,13 +112,14 @@ public class ActivityStep2 extends Activity implements OnClickListener{
 					files = new String[_files.length];
 					for(int f=0;f<_files.length;f++)
 					{
-					 files[f]=_files[f].getName();					 
+					 files[f]=_files[f].getName();
+					 if(cp<0)
 					 cp=files[f].equals(keyPair.getFile())?f:-1;
 					}
-					ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice,files);					
+					ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.item_list,files);					
 					list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 					list.setAdapter(adapter);
-					if(cp>=0&&!keyPair.getFile().isEmpty())		
+					if(cp>=0&&keyPair.getFile()!=null&&keyPair.getFile().trim().length()>0)		
 					{
 						list.setItemChecked(cp, true);
 						but_next.setEnabled(true);
@@ -177,7 +180,19 @@ public class ActivityStep2 extends Activity implements OnClickListener{
         	
         	File file_xml=new File(this.getFilesDir(),keyPair.getDir()+"/"+FtpSendTask.inbox+"/"+keyPair.getFile());
     		if(file_xml.exists())
+    		{
     			anketa=ru.develop.anketamanager.xmlnew.Anketa.Load(file_xml);
+    			if(anketa==null)
+    			{
+    				AlertDialog.Builder dlg_builder = new AlertDialog.Builder(this);
+    				dlg_builder.setMessage(String.format(getResources().getString(R.string.error_message_incorrect_format_file),file_xml.getName()));
+    				dlg_builder.setTitle("Ошибка загрузки файла");
+    				dlg_builder.show();
+    				return;
+    			}
+    		}
+    		
+    		
     		
     		intent= new Intent(this, ActivityStep3.class);
     		//setData();

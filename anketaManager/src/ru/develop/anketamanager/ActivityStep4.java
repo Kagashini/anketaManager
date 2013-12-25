@@ -18,6 +18,7 @@ import ru.develop.anketamanager.xmlnew.Brand;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -60,6 +61,69 @@ public class ActivityStep4 extends Activity implements OnClickListener{
 	//EditText amount_deliveries;
 	//EditText intro_prodiuctlines;
 	//EditText training_seminar;
+	
+
+	FtpSendTask ft_exchange=null;
+	
+	@Override
+	protected void onStop() 
+	{
+		super.onStop();
+		_finish();
+	};	
+	
+	void _finish()
+	{
+	
+		if(ft_exchange!=null&&ft_exchange.getStatus()!=AsyncTask.Status.FINISHED)
+		{
+			 ft_exchange.cancel(true);
+			 try {
+				ft_exchange.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 ft_exchange=null;
+		}
+				
+	};
+	
+	
+	
+	void focus_edittexts(View v)
+	{
+		try
+        {
+      	Object tag = v.getTag();
+      		          
+      	Brand  b = null;
+          if("ru.develop.anketamanager.xmlnew.Brand".equals(tag.getClass().getName()))
+          {
+          	b =(Brand)tag;
+          	b.setValue(
+          			((EditText)v).getText().toString()	                        
+          			);
+          }
+          else
+          {
+          	String[] nc=(String[])v.getTag();
+          	if(nc!=null&&nc.length==2)
+          	{
+          	b = new Brand();
+          	b.setName(nc[0]);
+          	b.setColumn(nc[1]);
+          	b.setValue(((EditText)v).getText().toString());
+          	anketa.getBrands().add(b);
+          	}
+          }
+        }
+        catch(Exception e)
+        {
+      	  
+        String esdf=e.getMessage();
+        }
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -120,36 +184,7 @@ public class ActivityStep4 extends Activity implements OnClickListener{
 	                @Override
 	                public void onFocusChange(View v, boolean hasFocus) {
 	                    if(!hasFocus){
-	                      try
-	                      {
-	                    	Object tag = v.getTag();
-	                    		          
-	                    	Brand  b = null;
-	                        if("ru.develop.anketamanager.xmlnew.Brand".equals(tag.getClass().getName()))
-	                        {
-	                        	b =(Brand)tag;
-	                        	b.setValue(
-	                        			((EditText)v).getText().toString()	                        
-	                        			);
-	                        }
-	                        else
-	                        {
-	                        	String[] nc=(String[])v.getTag();
-	                        	if(nc!=null&&nc.length==2)
-	                        	{
-	                        	b = new Brand();
-	                        	b.setName(nc[0]);
-	                        	b.setColumn(nc[1]);
-	                        	b.setValue(((EditText)v).getText().toString());
-	                        	anketa.getBrands().add(b);
-	                        	}
-	                        }
-	                      }
-	                      catch(Exception e)
-	                      {
-	                    	  
-	                      String esdf=e.getMessage();
-	                      }
+	                    	focus_edittexts(v);
 	                    }
 	                }
 	            };
@@ -289,11 +324,21 @@ public class ActivityStep4 extends Activity implements OnClickListener{
         	break;
         	
         case R.id.but_Send:
+        	EditText curr = null;
+        	try
+        	{
+        		curr=(EditText)getCurrentFocus();
+        		focus_edittexts(curr);
+        		but_send.setFocusable(true);
+        	}
+        	catch (Exception e) {
+				// TODO: handle exception
+			}
         	File file_xml = new File(this.getFilesDir(),keyPair.getDir()+"/"+FtpSendTask.outbox+"/"+keyPair.getFile());
         	ru.develop.anketamanager.xmlnew.Anketa.Save(file_xml, anketa);
         	if(file_xml.exists())
         	{
-        	FtpSendTask ft = new FtpSendTask(
+        	ft_exchange = new FtpSendTask(
         			4,
         			getResources().getString(R.string.ftp_server),
         			keyPair.getLogin(),
@@ -351,7 +396,7 @@ public class ActivityStep4 extends Activity implements OnClickListener{
         	but_quit.setEnabled(false);
         	but_prev.setEnabled(false);
         	but_send.setEnabled(false);
-        	ft.execute();      
+        	ft_exchange.execute();      
         	}
         	break;
 		}			

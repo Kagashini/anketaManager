@@ -7,7 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ActivityStep3" >
+    tools:context=".ActivityStep3" 
+    
+    >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -22,7 +24,10 @@
         android:layout_gravity="top|center"
         android:layout_marginBottom="5dp"
         android:layout_weight="80"
-        android:headerDividersEnabled="false" >
+        android:headerDividersEnabled="false"
+        android:fontFamily="@string/text_family"
+      android:textSize="@dimen/text_size"
+         >
 
     </ListView>
     

@@ -79,4 +79,6 @@
 	<string name="label_s3_trademark">Торговая точка:</string>
 	<string name="label_s3_address">Адрес:</string>
 	<string name="label_s3_visitpurpose">Цель визита:</string>
+	
+	<string name="error_message_incorrect_format_file">Не верный формат файла &quot;%s&quot;.\nДанный файл не соответствует принятому по соглашению формату.</string>
 </resources>

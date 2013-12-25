@@ -169,7 +169,9 @@ public class FtpSendTask extends AsyncTask<Void, Integer, Void> {
 					{
 						local=dir_local.getAbsolutePath()+"/"+list_files[f];
 						remote=this._remote+"\\"+list_files[f];
-						_cmd=String.format("%s %s %s %s %s %s","-b",_host,_user,_password,remote,local);
+						local = local.replace(' ','^');
+						remote = remote.replace(' ','^');
+						_cmd=String.format("%s %s %s %s %s %s","-b",_host,_user,_password,remote,local);						
 						FTPAgent.Exec(_cmd,s_,this);						
 					}
 				}
@@ -234,21 +236,59 @@ public class FtpSendTask extends AsyncTask<Void, Integer, Void> {
 			this._remote = "\\"+ remote+"\\"+outbox;
 			File dir_local=new File(this._local);
 			if(dir_local.exists())
-			{
-				//Если исходящие отправлены
-			if(UploadFiles())
 			{				
-			
-				//То получим входящие
-				this._local = new File(new File(local),remote+"/"+inbox).getAbsolutePath();
-				this._remote = "\\"+remote+"\\"+inbox;
-				result = DownloadFiles();				
-			}
+				//Если исходящие отправлены
+				if(UploadFiles())
+				{								
+					
+					//То получим входящие
+					this._local = new File(new File(local),remote+"/"+inbox).getAbsolutePath();
+					
+					
+					//Удалим файлы из папки входящих
+					File _inbox = new File(this._local);
+					if(_inbox.exists())
+					{
+						File  [] files_to_delete = _inbox.listFiles();
+						for(int f=0;f<files_to_delete.length;f++)
+						{
+							try
+							{
+							files_to_delete[f].delete();
+							}
+							catch(Exception e)
+							{
+								
+							}
+						}
+					}
+					
+					this._remote = "\\"+remote+"\\"+inbox;
+					result = DownloadFiles();				
+				}
 			}
 			else
 			{
 				//Получим входящие
 				this._local = new File(new File(local),remote+"/"+inbox).getAbsolutePath();
+				
+				//Удалим файлы из папки входящих
+				File _inbox = new File(this._local);
+				if(_inbox.exists())
+				{
+					File  [] files_to_delete = _inbox.listFiles();
+					for(int f=0;f<files_to_delete.length;f++)
+					{
+						try
+						{
+						files_to_delete[f].delete();
+						}
+						catch(Exception e)
+						{
+							
+						}
+					}
+				}
 				this._remote = "\\"+ remote+"\\"+inbox;
 				result = DownloadFiles();				
 			}

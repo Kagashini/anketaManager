@@ -18,6 +18,5 @@
     </style>
 
     <color  name="error">#00E000</color>
-    <color name="indicator">#FFFFFF</color>
-    
+    <color name="indicator">#FFFFFF</color>    
 </resources>

@@ -74,7 +74,8 @@ public final class FTPAgent {
         String proxyPassword = null;
         String username = null;
         String password = null;
-
+        
+        
         int base = 0;
         for (base = 0; base < args.length; base++)
         {
@@ -183,11 +184,13 @@ public final class FTPAgent {
         String remote = null;
         if (args.length - base > 0) {
             remote = args[base++];
+            remote = remote.replace('^',' ');
         }
 
         String local = null;
         if (args.length - base > 0) {
             local = args[base++];
+            local = local.replace('^',' ');
         }
 
         final FTPClient ftp;

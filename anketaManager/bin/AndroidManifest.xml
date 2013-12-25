@@ -30,7 +30,9 @@
         <activity android:name="ActivityStep2"/>                    
         <activity android:name="ActivityStep3"/>
         <activity android:name="ActivityStep4"/>
+        <!-- 
         <activity android:name="ActivityStep5"/>                  
-        <activity android:name="ActivityStep6"/>           
+        <activity android:name="ActivityStep6"/>
+         -->           
     </application>
 </manifest>

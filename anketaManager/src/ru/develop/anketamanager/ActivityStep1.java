@@ -18,6 +18,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.opengl.Visibility;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -55,6 +56,63 @@ public class ActivityStep1 extends Activity implements OnClickListener{
 	
 	GifMovieView loading; 
 	TextView loading_text;
+	
+	
+	
+	FtpSendTask ft_check=null;
+	FtpSendTask ft_exchange=null;
+	FtpSendTask ft_exchange2=null;
+	
+	@Override
+	protected void onStop() 
+	{
+		super.onStop();
+		_finish();
+	};
+	
+	@Override
+	protected void onDestroy() 
+	{
+	}
+	
+	void _finish()
+	{
+		if(ft_check!=null&&ft_check.getStatus()!=AsyncTask.Status.FINISHED)
+		{
+			 ft_check.cancel(true);
+			 try {
+				ft_check.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 ft_check=null;
+		}
+		
+		if(ft_exchange!=null&&ft_exchange.getStatus()!=AsyncTask.Status.FINISHED)
+		{
+			 ft_exchange.cancel(true);
+			 try {
+				ft_exchange.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 ft_exchange=null;
+		}
+		
+		if(ft_exchange2!=null&&ft_exchange2.getStatus()!=AsyncTask.Status.FINISHED)
+		{
+			 ft_exchange2.cancel(true);
+			 try {
+				ft_exchange2.wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 ft_exchange2=null;
+		}
+	};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -139,7 +197,7 @@ public class ActivityStep1 extends Activity implements OnClickListener{
 		but_ok.setEnabled(false);
 		
 		//Если не доступен хост
-		FtpSendTask ft = new FtpSendTask(
+		ft_check = new FtpSendTask(
     			0,
     			getResources().getString(R.string.ftp_server),
     			user.getText().toString(),
@@ -165,7 +223,7 @@ public class ActivityStep1 extends Activity implements OnClickListener{
     				}});
 		loading_text.setText("Проверка доступа к сети!");
 		loading.setVisible(true);
-		ft.execute();
+		ft_check.execute();
 				
 		directory.addTextChangedListener(new TextWatcher(){
 	        public void afterTextChanged(Editable s) {}
@@ -235,7 +293,7 @@ public class ActivityStep1 extends Activity implements OnClickListener{
         			if(msg.arg2==2) //Если нет ошибок, то идем дальше
         			{        		
         				loading_text.setText("Выполняется обмен данными с сервером!\nПожалуйста подождите!");        				
-        				FtpSendTask ft = new FtpSendTask(
+        				ft_exchange2 = new FtpSendTask(
         	        			4,
         	        			getResources().getString(R.string.ftp_server),
         	        			user.getText().toString(),
@@ -293,8 +351,7 @@ public class ActivityStep1 extends Activity implements OnClickListener{
         	                			}
         	        				};	
         	        			});
-        	        	ft.execute();      
-        				
+        	        	ft_exchange2.execute();        				
         			}
         			
         		}        		
@@ -308,7 +365,7 @@ public class ActivityStep1 extends Activity implements OnClickListener{
         	directory.setEnabled(false);
         	
         	
-        	FtpSendTask ft = new FtpSendTask(
+        	ft_exchange = new FtpSendTask(
         			1,
         			getResources().getString(R.string.ftp_server),
         			user.getText().toString(),
@@ -318,7 +375,7 @@ public class ActivityStep1 extends Activity implements OnClickListener{
         			h_post);
         	loading.setVisible(true);
         	loading_text.setText("Проверка папки на сервере!");
-        	ft.execute();    
+        	ft_exchange.execute();    
         	
         	  	
         	

@@ -13,11 +13,14 @@
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"       
-        android:stretchColumns="*"
+        android:stretchColumns="*"        
        >
     
         <TableRow>
-            <TextView android:layout_span="2"/>
+            <TextView android:layout_span="2"
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size"
+                />
 		</TableRow>
         
         <TableRow>
@@ -26,8 +29,9 @@
         	    android:layout_width="wrap_content"
         	    android:layout_height="wrap_content"
         	    android:layout_gravity="right|center"
-        	    android:text="@string/label_s3_number"
-        	    android:textSize="18sp" />
+        	    android:text="@string/label_s3_number"        	    
+        	    android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/s3_number"
@@ -35,7 +39,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
 				android:gravity="left"
-                android:textSize="18sp" />
+                
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
         </TableRow>
         
               <TableRow>
@@ -45,7 +51,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center"
                 android:text="@string/label_s3_date"
-                android:textSize="18sp" />
+                
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size"/>
 
             <TextView
                 android:id="@+id/s3_date"
@@ -53,7 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
 				android:gravity="left"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 
         </TableRow>
           <TableRow>
@@ -63,7 +72,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center"
                 android:text="@string/label_s3_initiator"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/s3_initiator"
@@ -71,7 +81,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
 				android:gravity="left"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 
         </TableRow>
           <TableRow>
@@ -81,7 +92,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center"
                 android:text="@string/label_s3_customer"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/s3_customer"
@@ -89,7 +101,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
 				android:gravity="left"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 
         </TableRow>
           <TableRow>
@@ -99,7 +112,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center"
                 android:text="@string/label_s3_contact"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/s3_contact"
@@ -107,7 +121,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
 				android:gravity="left"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 
         </TableRow>
        <TableRow>
@@ -116,14 +131,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center"
                 android:text="@string/label_s3_trademark"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
             <TextView
                 android:id="@+id/s3_trademark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
 				android:gravity="left"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 </TableRow>
 <TableRow>
             <TextView                
@@ -131,7 +148,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center"
                 android:text="@string/label_s3_address"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/s3_address"
@@ -139,7 +157,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
 				android:gravity="left"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 </TableRow>
 <TableRow>
 
@@ -148,7 +167,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center"
                 android:text="@string/label_s3_visitpurpose"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/s3_visitpurpose"
@@ -156,7 +176,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
 				android:gravity="left"
-                android:textSize="18sp" />
+                android:fontFamily="@string/text_family"
+        android:textSize="@dimen/text_size" />
 </TableRow>
           
               </TableLayout>
